@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#Iterate over an array
+function newline(){
+    echo "";
+}
+
+WORDS=(hello there how are you today);
+
+
+#For loop with index
+for (( i=0; i<${#WORDS[@]}; i++ )) do
+	 echo ${WORDS[$i]}
+done
+echo "";
+
+#For each loop
+for VAL in ${WORDS[@]}; do
+    echo $VAL
+done
+echo "";
+
+#While loops
+i=0
+while [[ i -lt ${#WORDS[@]} ]]; do
+    echo ${WORDS[$i]};
+    i=`expr $i + 1`;
+done
+echo "";
+

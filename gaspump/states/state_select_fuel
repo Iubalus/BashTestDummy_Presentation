@@ -1,0 +1,6 @@
+#!/bin/bash
+
+function state_select_fuel(){
+    echo "Select fuel type"
+    CURRENT_STATE=$STATE_PUMP_FUEL
+}

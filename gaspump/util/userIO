@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [[ -z $ENV_IS_SET ]]; then
+    . ~/project/gaspump/util/colors
+    . ~/project/gaspump/util/echo_color
+fi
+
+function header(){
+    echo_color $YELLOW "$@"
+}
+
+function option(){
+    echo "   $1 - $2"
+}
+
+function isNumber(){
+    local re='^[0-9]+$'
+    if [[ $1 =~ $re ]]; then
+	echo "true"
+    fi
+}
+
+function warning(){
+    echo_color $ORANGE "$@"
+}
+
+function getNumberInput(){
+    INPUT="NaN"
+    while [[ ! `isNumber $INPUT` ]]; do
+	read -p ">>" INPUT
+    done
+}
+
+function getRangeNumberInput(){
+    local lowerBound=$1
+    local upperBound=$2
+    if [[ -z $INPUT ]]; then
+	getNumberInput
+    fi
+    while [[ $INPUT -lt $lowerBound ]] || [[ $INPUT -gt $upperBound ]]; do
+	getNumberInput
+    done
+}
+
+#header "Please enter a number between 1 and 10"
+#getRangeNumberInput 1 10
+#echo $INPUT "was selected"
+#unset INPUT

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+SOURCE=~/project/gaspump/fuel
+ENV_SOURCE=~/project/gaspump/set_env
+
+TESTS=(
+    test_requiresEnvironment
+    test_initializesWhenEnvIsSet
+    test_atLeastOneFuelExists
+    test_canGetFuelName
+)
+
+function test_requiresEnvironment(){
+    . $SOURCE
+    if [[ $? -eq 0 ]]; then
+	FAIL_MESSAGE="Initialized without the environment being set"
+    fi
+}
+
+function test_initializesWhenEnvIsSet(){
+    . $ENV_SOURCE
+    . $SOURCE
+    if [[ $? -ne 0 ]]; then
+	FAIL_MESSAGE="Fuel failed after initialization"
+    fi
+}
+
+function test_atLeastOneFuelExists(){
+    local FUELS={getFuels}
+    if [[ ${#FUELS[@]} -lt 1 ]]; then
+	FAIL_MESSAGE="No fuels were present"
+    fi
+}
+
+function test_canGetFuelName(){
+    local FUELS=`getFuels`
+    FIRST_FUEL=${FUELS[0]}
+    FUEL_NAME=`getFuelName $FIRST_FUEL`
+    echo $FUEL_NAME
+    if [[ -z FUEL_NAME ]]; then
+	FAIL_MESSAGE="Could not get a fuel name"
+    fi
+}
+
+runTests ${TESTS[@]}

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#Prep for my turnary nightmare
+function someFunctionYouHaveNeverEverHeardOfThatTakesManyArguments(){
+    echo "Jk. I don't actually do anything with them"
+    echo "I could be moving the world. Or even changing the value that got me here. Check it out"
+    VAL=3;
+    echo "now I totally would have been the other choice."
+    echo "ok. I'll print them anyway"
+    echo "$@"
+}
+
+function someOtherFunction(){
+    echo $(( $1 * 100 + 13));
+    echo "God help you if you didn't pass a number"
+}
+SCPT="All glories are flying from the heart of darkness"
+PRSN="Swordsman"
+VAL=10
+SOME_ARRAY=("Apple", "Banana", 4);
+
+
+
+[[ $VAL -lt 4 ]] && echo "$SCPT The $VAL daring $PRSN strike out to the east `echo "you thought I was done"; echo "Oh no sweet. We have only begun"; sleep 10`&" >> "someObscureFile.dat" || someFunctionYouHaveNeverEverHeardOfThatTakesManyArguments 5 "thirty-two" "egg shells" `someOtherFunction 2` "apples" $VAL $SOME_UNSET_VALUE_FROM_SOMEWHERE ${SOME_ARRAY[@]} `uname -m` `[[ "true" ]] && echo "another turnary" || echo "this is impossible"` 
+
+
+#Yay turnary!!! 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+function state_pay(){
+    echo "State pay"
+    CURRENT_STATE=$STATE_EXIT
+}

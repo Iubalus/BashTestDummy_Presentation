@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ -z $ENV_IS_SET ]]; then
+    echo "Environment unset. Cannot initialize fuels."
+    return 2;
+fi
+
+export FUEL_NAME="_name";
+export FUEL_UNIT="_fuel_unit";
+export FUEL_UNIT_AB="_fuel_unit_ab";
+export FUEL_CREDITS_PER_UNIT="_credits_per_unit";
+
+function getFuelName(){
+    echo `$1$FUEL_NAME`
+}
+
+function getFuelUnit(){
+    echo `$1$FUEL_UNIT`
+}
+
+function getFuelUnitAB(){
+    echo `$1$FUEL_UNIT_AB`
+}
+
+function getFuelCreditsPerUnit(){
+    echo `$1$FUEL_CREDITS_PER_UNIT`
+}
+
+function getFuels(){
+    echo `ls -B $FUEL_DIR/`
+}
+
+function initializeFuel(){
+    local FUELS=(`getFuels`)
+    for FUEL in ${FUELS[@]}; do
+	. $FUEL_DIR/$FUEL
+    done
+}
+
+initializeFuel
+

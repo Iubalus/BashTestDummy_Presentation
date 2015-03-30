@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#There are several different ways to do arithmetic.
+
+#Arithmetic through expr
+echo 1 + 1          #Doesn't evaluate anything
+echo `expr 1 + 1`
+echo ""
+
+echo 2 * 2          # Astrisk lists a whole bunch of stuff...
+echo `expr 2 * 4`   # Astrisk needs to be escaped
+echo `expr 2 \* 4`
+echo ""
+
+#Arithmetic through $((expression)) stuff
+echo $((1 + 1))
+echo $((2 * 4))   #Astrisk does not need escaped in this context

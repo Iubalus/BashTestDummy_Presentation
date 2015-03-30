@@ -1,0 +1,7 @@
+#!/bin/bash
+
+function state_pump_fuel(){
+    header "Ready to pump fuel."
+    echo "pumping fuel"
+    CURRENT_STATE=$STATE_PAY
+}

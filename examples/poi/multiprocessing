@@ -1,0 +1,25 @@
+#!/bin/bash
+
+. ~/project/util/colors
+. ~/project/util/echo_color
+
+function heavyOperation(){
+    echo_color $LIME "I'm really doing stuff";
+    sleep 2;
+    echo_color $LIME "I finally finished"
+}
+
+function lightTask(){
+    echo_color $YELLOW "I don't have to do too much";
+    sleep 1;
+    echo_color $YELLOW "See that wasn't too bad.";
+}
+
+echo_color $WHITE "I am the " $LIME "Heavy operation"
+echo_color $WHITE "I am the " $YELLOW "Light Operation"
+echo "";
+heavyOperation&
+lightTask&
+echo "I happen immediately"
+wait
+echo "All operations finished"

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+function state_exit(){
+    echo "Exit state"
+    break;
+}

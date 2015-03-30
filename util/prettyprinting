@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function header(){
+    echo_color $YELLOW "$@"
+}
+
+function indent(){
+    echo -e "\t$@"
+}
+
+function linebreak(){
+    echo "";
+}

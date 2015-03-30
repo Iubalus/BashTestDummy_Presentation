@@ -1,0 +1,18 @@
+#!/bin/bash
+(
+    . ./base_test
+
+    TEST_DIR=./tests
+    ALL_TESTS=`ls -B $TEST_DIR`
+
+    for TEST_TO_RUN in ${ALL_TESTS[@]}; do
+	echo_color $WHITE "BEGIN " $YELLOW $TEST_TO_RUN
+	. $TEST_DIR/$TEST_TO_RUN
+
+    done
+
+    echo "END TESTING"
+    echo -e "\t"$(( $TESTS_PASSING + $TESTS_FAILING ))" TESTS RUN"
+    echo_color $LIME "\t"$TESTS_PASSING" TESTS PASSED"
+    echo_color $ORANGE "\t"$TESTS_FAILING" TESTS FAILED"
+)

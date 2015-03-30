@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LIST=(`ls -r */*/*.sh`)
+echo ${#LIST[@]}
+
+for ITEM in ${LIST[@]}; do
+    LEN=${#ITEM};
+    echo $ITEM
+#    mv $ITEM ${ITEM::$(($LEN - 3))}
+done

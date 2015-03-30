@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. ~/project/util/colors
+. ~/project/util/echo_color
+
+echo_color $YELLOW "Bash supports regular expressions..."
+echo "Example: "
+function isNumber(){
+    local re='^[0-9]+$'
+    if [[ $1 =~ $re ]]; then
+	echo "true"
+    fi
+}
+
+HAT=3
+if [[ `isNumber $HAT` ]]; then
+    echo -e "\t$HAT is a number";
+fi
+HAT="tree"
+if [[ ! `isNumber $HAT` ]]; then
+    echo -e "\t\"$HAT\" is not a number";
+fi

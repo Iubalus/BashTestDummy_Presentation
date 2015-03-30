@@ -1,0 +1,39 @@
+#!/bin/bash
+
+UTIL_DIR="../util"
+. $UTIL_DIR/colors
+. $UTIL_DIR/echo_color
+
+export TESTS_PASSING=0
+export TESTS_FAILING=0;
+
+TESTS=(test_fails test_passes);
+
+function test_fails(){
+    FAIL_MESSAGE="I always fail"
+}
+
+function test_passes(){
+    echo ""
+}
+
+function runTests(){
+    for TEST in $@; do
+	echo_color $BLUE "running test: " $CYAN "$TEST"
+	$TEST	
+	if [[ -z $FAIL_MESSAGE ]]; then
+	    TESTS_PASSING=$(( $TESTS_PASSING + 1 ))
+	    echo_color $LIME "\tSuccess"
+	else
+	    TESTS_FAILING=$(( $TESTS_FAILING + 1 ))
+	    echo_color $RED_HIGHLIGHTED "\tTest failed:" $RED " $FAIL_MESSAGE"
+	fi
+	unset FAIL_MESSAGE
+    done
+}
+
+#runTests ${TESTS[@]}
+
+export TESTS_PASSING=0
+export TESTS_FAILING=0;
+unset TESTS

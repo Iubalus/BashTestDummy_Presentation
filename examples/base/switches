@@ -1,0 +1,14 @@
+#!/bin/bash
+VAL=2
+case $VAL in
+    1)
+	echo "hello"
+	;;
+    2)
+	echo "goodbye"
+	;;
+    *)
+	echo "unknown"
+	;;
+esac
+	  

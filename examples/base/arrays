@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#Associative array
+
+declare -A MAPTHING;
+
+SECRET="secret";
+KEY="hat";
+
+MAPTHING[$KEY]="I like to wear hats";
+MAPTHING[$SECRET]="I was lying about the hats";
+
+echo ${MAPTHING[$KEY]};
+echo ${MAPTHING[$SECRET]};
+echo ""
+
+
+
+#Standard arrays
+
+THING=() #or THING=("Apple", 1, "0.50") also works
+THING[0]="Apple"
+THING[1]=1
+THING[2]="0.50"
+
+echo "I bought ${THING[1]} ${THING[0]} for ${THING[2]}"  
+echo ${#THING[@]}
+echo ${#THING[*]}
+

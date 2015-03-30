@@ -1,0 +1,59 @@
+#!/bin/bash
+
+function appendFail(){
+    if [[ -z $FAIL_MESSAGE ]]; then
+	FAIL_MESSAGE="$@";
+    else
+	FAIL_MESSAGE="$FAIL_MESSAGE, $@"
+    fi
+}
+
+function assertNotNull(){
+    if [[ -z $1 ]]; then
+	appendFail "expected value was null"
+    fi
+}
+
+function assertNoError(){
+    if [[ $1 -ne 0 ]]; then
+	appendFail "failed with error code $1"
+    fi
+}
+
+function assertNumericExpected(){
+    if [[ $1 -ne $2 ]]; then
+	appendFail "expected \"$1\" but found \"$2\" instead"
+    fi
+}
+
+TESTS=(
+    test_returnsZeroWhenGivenNoArguments
+    test_givenSingleArgumentReturnGiven
+)
+
+function test_returnsZeroWhenGivenNoArguments(){
+    unset RESULT
+    addFunc
+    assertNoError $?
+    assertNotNull $RESULT
+    assertNumericExpected 0 $RESULT
+}
+
+function test_givenSingleArgumentReturnGiven(){
+    unset RESULT
+    addFunc 1
+    assertNoError $?
+    assertNotNull $RESULT
+    assertNumericExpected 1 $RESULT
+}
+
+function addFunc(){
+    if [[ -z $1 ]]; then
+	RESULT=0
+    else
+	RESULT=$1
+    fi
+}
+
+runTests ${TESTS[@]}
+

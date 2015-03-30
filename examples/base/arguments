@@ -1,0 +1,43 @@
+#!/bin/bash
+
+function printArgs(){
+    echo $@
+}
+
+printArgs "yaay" "woo" "yeah" "wowza"
+
+function printArgsLength(){
+    echo $#
+}
+
+printArgsLength "boom" "bwooo" "bapoom"
+
+function printFirst2Args(){
+    echo $1 $2 "... um hello."
+}
+
+printFirst2Args "I saw the zaxar" "and I magged it too"
+
+function iterateOverArgs(){
+    while [[ $# -gt 0 ]]; do
+	echo "$1 bannana"
+	shift
+    done
+    echo "more"
+}
+
+iterateOverArgs one two three four five six seven
+
+#This is the better way to iterate over arguments.
+function curioCity(){
+    for ARG in $@; do
+	echo "The power of $ARG";
+    done
+    SUM=0;
+    for ARG in $@; do
+        SUM=$(($SUM + $ARG));
+    done
+    echo "By our powers combined we are $SUM...*crickets*"
+}
+
+curioCity 2 4 6

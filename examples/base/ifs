@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#We have standard boolean operations
+
+if (( 9 == 10 )); then
+    echo "true"
+elif [[ 4 -eq 5 ]]; then
+    echo "hows about now"
+else
+    echo "naw"
+fi
+
+#[[ condition ]] includes such operations as -lt -gt -eq -z
+#or (( x < y )) which supports all the standard boolean stuff
+
+#Bash also has turnary.
+#[[ condition ]] && true case || false case
+
+#See "WhyTurnaryCanBeBad"

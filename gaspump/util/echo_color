@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function echo_color(){
+    local res=""
+    while [[ $# -gt 0 ]]; do
+	res=$res$1$2;
+	shift;
+	shift;
+    done
+    echo -e $res$WHITE
+}
+
+#echo "Initializing colors..."
+#echo_color $RED R $ORANGE o $YELLOW y $GREEN " G. " $BLUE B $INDIGO i $VIOLET v
+#echo ""

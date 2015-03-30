@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Setup variables
+export ENV_IS_SET=1;
+
+#Setup directories
+export MAIN_DIR=~/project/gaspump
+export FUEL_DIR=$MAIN_DIR/fuels
+export UTIL_DIR=$MAIN_DIR/util
+export STATES_DIR=$MAIN_DIR/states
+
+#Setup Utilities
+. $UTIL_DIR/colors
+. $UTIL_DIR/echo_color
+. $UTIL_DIR/userIO

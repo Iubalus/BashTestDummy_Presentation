@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo_color $LIME "Initializing Zarkon Crystal fuel distribution"
+
+function zarkon_crystals_name(){
+    echo "Zarkon Crystals"
+}
+function zarkon_crystals_fuel_unit(){
+    echo "Protogarblons"
+}
+function zarkon_crystals_fuel_unit_ab(){
+    echo "Prgs"
+}
+function zarkon_crystals_credits_per_unit(){
+    echo "10"
+}

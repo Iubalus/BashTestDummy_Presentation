@@ -1,0 +1,20 @@
+#!/bin/bash
+
+. set_env 
+
+for STATE in `ls -B $STATES_DIR`; do
+    . $STATES_DIR/$STATE
+done
+
+STATE_HOME="state_home"
+STATE_SELECT_PAYMENT="state_select_payment"
+STATE_SELECT_FUEL="state_select_fuel"
+STATE_PUMP_FUEL="state_pump_fuel"
+STATE_PAY="state_pay"
+STATE_EXIT="state_exit"
+
+CURRENT_STATE=$STATE_HOME;
+export FUEL_TO_BUY=0
+while [[ "true" ]]; do
+    $CURRENT_STATE;
+done

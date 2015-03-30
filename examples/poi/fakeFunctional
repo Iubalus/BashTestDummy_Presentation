@@ -1,0 +1,15 @@
+#!/bin/bash
+
+. ~/project/util/colors
+. ~/project/util/echo_color
+
+echo_color $ORANGE "A string that is pretending to be a function"
+
+#Bash can pretend to be functional!
+function hatAttack(){
+    echo "hats... HAATTSSSS!"
+    echo "Also an argument ($1) to show this is still a function"
+}
+HAT=hatAttack
+echo `$HAT "foo"`   #evaluates
+echo $HAT foo       #still a string

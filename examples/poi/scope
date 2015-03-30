@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#My little helper utilities
+. ~/project/util/colors
+. ~/project/util/echo_color
+. ~/project/util/prettyprinting
+
+function doStuff(){
+    export GLOBAL="Global variable";
+    ALSO_GLOBAL="Also global variable";
+    local LOCAL="Local variable";
+    declare ALSO_LOCAL="Also local variables";
+
+    header "Global variables (within declared scope)";
+    indent $GLOBAL;
+    indent $ALSO_GLOBAL;
+    header "Local variables (within declared scope)";
+    indent $LOCAL;
+    indent $ALSO_LOCAL;
+    linebreak;
+}
+
+doStuff;
+
+header "Global (outside declared scope)";
+indent $GLOBAL;
+indent $ALSO_GLOBAL;
+header "Local (outside declared scope)";
+indent $LOCAL;
+indent $ALSO_LOCAL;
+linebreak;
+
+(
+    header "Global (in sub-shell outside declared scope)";
+    indent $GLOBAL;
+    indent $ALSO_GLOBAL;
+    linebreak;
+    #Declaring variables in the sub-shell
+
+    export SUB_SHELL_GLOBAL="SubshellGlobal"
+    SUB_SHELL_ALSO_GLOBAL="Also global"
+    
+    header "Inside subshell. Freshly declared globals"
+    indent $SUB_SHELL_GLOBAL
+    indent $SUB_SHELL_ALSO_GLOBAL
+    linebreak;
+)
+header "Outside of sub-shell"
+indent $SUB_SHELL_GLOBAL
+indent $SUB_SHELL_ALSO_GLOBAL

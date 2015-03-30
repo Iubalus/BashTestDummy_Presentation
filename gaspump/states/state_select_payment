@@ -1,0 +1,6 @@
+#!/bin/bash
+
+function state_select_payment(){
+    echo "Select Payment"
+    CURRENT_STATE=$STATE_SELECT_FUEL
+}
